@@ -98,7 +98,6 @@ public class Main {
     }
 
     private static void sortExpenses(List<Integer> arrayList) {
-        int arrlength = arrayList.size();
-        //Complete the method. The expenses should be sorted in ascending order.
+        arrayList.sort((n1, n2) -> n1 - n2);
     }
 }
