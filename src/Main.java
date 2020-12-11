@@ -24,6 +24,7 @@ public class Main {
 
     private static void optionsSelection(List<Integer> expenses) {
         int opt = 0;
+        Scanner sc = new Scanner(System.in);
         do {
             String[] arr = {"1. I wish to review my expenditure",
                     "2. I wish to add my expenditure",
@@ -37,7 +38,6 @@ public class Main {
             }
 
             System.out.println("\nEnter your choice:\t");
-            Scanner sc = new Scanner(System.in);
             opt = sc.nextInt();
 
 
@@ -83,7 +83,7 @@ public class Main {
             }
 
         } while (opt != 6);
-
+        sc.close();
     }
 
 
