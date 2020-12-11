@@ -1,7 +1,12 @@
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Main {
@@ -11,16 +16,27 @@ public class Main {
         System.out.println("\tWelcome to TheDesk \n");
         System.out.println("**************************************");
         List<Integer> expenseList = new ArrayList<>();
-        expenseList.add(1000);
-        expenseList.add(2300);
-        expenseList.add(45000);
-        expenseList.add(32000);
-        expenseList.add(110);
+        final String FILE = "persist.txt";
+        try {
+            Scanner infile = new Scanner(new File(FILE));
+            while (infile.hasNextInt()) {
+                expenseList.add(infile.nextInt());
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File " + FILE + " was not found");
+            e.printStackTrace();
+        }
+
+
+        // expenseList.add(1000);
+        // expenseList.add(2300);
+        // expenseList.add(45000);
+        // expenseList.add(32000);
+        // expenseList.add(110);
         optionsSelection(expenseList);
 
     }
-
-    private final static ArrayList<Integer> arrlist = new ArrayList<Integer>();
 
     private static void optionsSelection(List<Integer> expenses) {
         int opt = 0;
@@ -71,7 +87,9 @@ public class Main {
                     sortExpenses(expenses);
                     break;
                 case 5:
-                    searchExpenses(expenses);
+                    System.out.println("Enter the expense you need to search:\t");
+                    int term = sc.nextInt();
+                    searchExpenses(expenses, term);
                     break;
                 case 6:
                     closeApp();
@@ -86,15 +104,21 @@ public class Main {
         sc.close();
     }
 
-
     private static void closeApp() {
         System.out.println("Closing your application... \nThank you!");
     }
 
-    private static void searchExpenses(List<Integer> arrayList) {
-        int leng = arrayList.size();
-        System.out.println("Enter the expense you need to search:\t");
-        //Complete the method
+    private static void searchExpenses(List<Integer> arrayList, int term) {
+        List<Integer> copy = new ArrayList<>(arrayList);
+        copy.sort((n1, n2) -> n1 - n2);
+        int idx = Collections.binarySearch(copy, term);
+
+        if (idx >= 0) {
+            System.out.println(copy.get(idx) + " IS in the expenses.\n");
+        } else {
+            System.out.println(term + " IS NOT in the expenses\n");
+        }
+
     }
 
     private static void sortExpenses(List<Integer> arrayList) {
