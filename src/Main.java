@@ -59,7 +59,8 @@ public class Main {
                                 "You are about the delete all your expenses! \nConfirm again by selecting the same option...\n");
                         int con_choice = sc.nextInt();
                         if (con_choice == options) {
-                            expenses.clear();
+                            arrlist.clear();
+                            expenses.removeAll(arrlist);
                             System.out.println(expenses + "\n");
                             System.out.println("All your expenses are erased!\n");
                         } else {
