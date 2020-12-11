@@ -12,6 +12,8 @@ public class Main {
 
     }
 
+    private final static ArrayList<Integer> arrlist = new ArrayList<Integer>();
+
     private static void optionsSelection() {
         String[] arr = {"1. I wish to review my expenditure",
                 "2. I wish to add my expenditure", "3. I wish to delete my expenditure",
@@ -24,7 +26,6 @@ public class Main {
             System.out.println(arr[i]);
             // display the all the Strings mentioned in the String array
         }
-        ArrayList<Integer> arrlist = new ArrayList<Integer>();
         ArrayList<Integer> expenses = new ArrayList<Integer>();
         expenses.add(1000);
         expenses.add(2300);
@@ -46,9 +47,9 @@ public class Main {
                     case 2:
                         System.out.println("Enter the value to add your Expense: \n");
                         int value = sc.nextInt();
-                        expenses.add(value);
+                        arrlist.add(value);
                         System.out.println("Your value is updated\n");
-                        expenses.addAll(arrlist);
+                        expenses.add(value);
                         System.out.println(expenses + "\n");
                         optionsSelection();
 
