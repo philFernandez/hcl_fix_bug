@@ -1,9 +1,6 @@
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,24 +13,12 @@ public class Main {
         System.out.println("\tWelcome to TheDesk \n");
         System.out.println("**************************************");
         List<Integer> expenseList = new ArrayList<>();
-        final String FILE = "persist.txt";
-        try {
-            Scanner infile = new Scanner(new File(FILE));
-            while (infile.hasNextInt()) {
-                expenseList.add(infile.nextInt());
-            }
+        expenseList.add(1000);
+        expenseList.add(2300);
+        expenseList.add(45000);
+        expenseList.add(32000);
+        expenseList.add(110);
 
-        } catch (FileNotFoundException e) {
-            System.out.println("File " + FILE + " was not found");
-            e.printStackTrace();
-        }
-
-
-        // expenseList.add(1000);
-        // expenseList.add(2300);
-        // expenseList.add(45000);
-        // expenseList.add(32000);
-        // expenseList.add(110);
         optionsSelection(expenseList);
 
     }
@@ -123,5 +108,7 @@ public class Main {
 
     private static void sortExpenses(List<Integer> arrayList) {
         arrayList.sort((n1, n2) -> n1 - n2);
+        System.out.println(arrayList);
+        System.out.println();
     }
 }
