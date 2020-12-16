@@ -1,6 +1,4 @@
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,9 +16,7 @@ public class Main {
         expenseList.add(45000);
         expenseList.add(32000);
         expenseList.add(110);
-
         optionsSelection(expenseList);
-
     }
 
     private static void optionsSelection(List<Integer> expenses) {
@@ -98,10 +94,10 @@ public class Main {
         copy.sort((n1, n2) -> n1 - n2);
         int idx = Collections.binarySearch(copy, term);
 
-        if (idx >= 0) {
-            System.out.println(copy.get(idx) + " IS in the expenses.\n");
+        if (idx < 0) {
+            System.out.println(term + " NOT in expenses\n");
         } else {
-            System.out.println(term + " IS NOT in the expenses\n");
+            System.out.println(term + " IS in expenses\n");
         }
 
     }
